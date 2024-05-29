@@ -20,18 +20,32 @@ import {MatGridListModule} from '@angular/material/grid-list';
 
 
 //ReactiveForms
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 //Solicitudes Http
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 
 //dayJS
-import * as dayjs from 'dayjs'
+import * as dayjs from 'dayjs';
+
+//NG Zorro
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en'
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+
+//Components
+import { DrawerComponent } from './Components/drawer/drawer.component';
+
+registerLocaleData(en);
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DrawerComponent
   ],
   imports: [
     BrowserModule,
@@ -40,17 +54,21 @@ import * as dayjs from 'dayjs'
     //Material
     MatButtonModule,MatPaginatorModule,MatTableModule,ReactiveFormsModule,
     MatInputModule,MatSelectModule,MatDatepickerModule,NativeDateModule,
-    MatSnackBarModule,MatIconModule,MatDialogModule,MatGridListModule,
+    MatSnackBarModule,MatIconModule,MatDialogModule,MatGridListModule,FormsModule,
 
     //Http
     HttpClientModule,
 
 
+    //NGZORRO
+    NzDrawerModule,NzIconModule,
 
 
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    { provide: NZ_I18N, useValue: en_US },
+    provideHttpClient()
   ],
   bootstrap: [AppComponent]
 })
