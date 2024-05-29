@@ -8,10 +8,10 @@ import { Menu } from '../../Interfaces/Menu/menu';
 })
 export class DrawerComponent {
 
-  menu: Menu = {
-    employesVisibilityStatus: false,
-    departmentVisibilityStatus: false,
-  };
+  menuItems: Menu[] = [
+    { name: 'employes', visibilityStatus: false },
+    { name: 'departments', visibilityStatus: false }
+  ];
 
   visible = false;
 
@@ -23,16 +23,13 @@ export class DrawerComponent {
     this.visible = false;
   }
 
-  departmentClicked(): void {
-
-    this.menu.departmentVisibilityStatus = !this.menu.departmentVisibilityStatus;
-    console.log('department clicked',this.menu.departmentVisibilityStatus);
-  }
-
-  employeClicked(): void {
-
-    this.menu.employesVisibilityStatus = !this.menu.employesVisibilityStatus;
-    console.log('employe clicked',this.menu.employesVisibilityStatus);
+  toggleVisibility(itemName: string): void {
+    this.menuItems.forEach(item => {
+      item.visibilityStatus = (item.name === itemName) ? !item.visibilityStatus : false;
+      console.log(item.name);
+      console.log(item.visibilityStatus);
+    });
+    this.close();
   }
 
 

@@ -1,4 +1,6 @@
 export interface Menu {
-  employesVisibilityStatus:boolean,
-  departmentVisibilityStatus:boolean,
+
+    name: string;
+    visibilityStatus: boolean;
+
 }

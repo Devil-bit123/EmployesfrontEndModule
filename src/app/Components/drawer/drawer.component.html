@@ -12,19 +12,18 @@
 >
   <ng-container *nzDrawerContent>
 
-    <div (click)="employeClicked()">
-    <div style="display: flex; flex-direction: row; gap: 12px;">
-      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="people"></mat-icon>
-      <p>Employes</p>
-    </div>
-  </div>
+    <div *ngIf="visible">
 
-  <div (click)="departmentClicked()">
-    <div style="display: flex; flex-direction: row; gap: 12px;">
-      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="apartment"></mat-icon>
-      <p>Department</p>
+      <div *ngFor="let item of menuItems">
+
+        <div (click)="toggleVisibility(item.name)" style="display: flex; flex-direction: row; align-items: center;">
+          <mat-icon  aria-hidden="false" aria-label="Example home icon" fontIcon="people"></mat-icon>
+          <p>{{item.name}}</p>
+        </div>
+
+      </div>
     </div>
-  </div>
+
 
   </ng-container>
 </nz-drawer>
