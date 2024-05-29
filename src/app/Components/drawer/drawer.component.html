@@ -1,1 +1,30 @@
-<p>drawer works!</p>
+<!-- <button nz-button nzType="primary" >Open</button> -->
+<div style="margin:20px 0px 0px 20px; height: 80px; width: 80px;">
+  <span nz-icon (click)="open()" nzType="filter" nzTheme="outline"></span>
+</div>
+
+<nz-drawer
+  [nzClosable]="false"
+  [nzVisible]="visible"
+  nzPlacement="right"
+  nzTitle="Modules"
+  (nzOnClose)="close()"
+>
+  <ng-container *nzDrawerContent>
+
+    <div (click)="employeClicked()">
+    <div style="display: flex; flex-direction: row; gap: 12px;">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="people"></mat-icon>
+      <p>Employes</p>
+    </div>
+  </div>
+
+  <div (click)="departmentClicked()">
+    <div style="display: flex; flex-direction: row; gap: 12px;">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="apartment"></mat-icon>
+      <p>Department</p>
+    </div>
+  </div>
+
+  </ng-container>
+</nz-drawer>
