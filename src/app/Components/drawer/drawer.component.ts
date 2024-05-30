@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { Menu } from '../../Interfaces/Menu/menu';
+import { MenuService } from '../../Services/Menu/menu.service';
 
 @Component({
   selector: 'app-drawer',
@@ -8,10 +9,21 @@ import { Menu } from '../../Interfaces/Menu/menu';
 })
 export class DrawerComponent {
 
-  menuItems: Menu[] = [
-    { name: 'employes', visibilityStatus: false },
-    { name: 'departments', visibilityStatus: false }
-  ];
+  //  menuItems: Menu[] = [
+  //   { name: 'employes', visibilityStatus: false },
+  //   { name: 'departments', visibilityStatus: false }
+  // ];
+
+  menuItems$ = this.menuService.menuItems$;
+
+
+  /**
+   *
+   */
+  constructor(private menuService: MenuService) {
+
+
+  }
 
   visible = false;
 
@@ -23,13 +35,8 @@ export class DrawerComponent {
     this.visible = false;
   }
 
-  toggleVisibility(itemName: string): void {
-    this.menuItems.forEach(item => {
-      item.visibilityStatus = (item.name === itemName) ? !item.visibilityStatus : false;
-      console.log(item.name);
-      console.log(item.visibilityStatus);
-    });
-    this.close();
+toggleVisibility(itemName: string): void {
+    this.menuService.toggleVisibility(itemName);
   }
 
 

@@ -38,6 +38,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 
 //Components
 import { DrawerComponent } from './Components/drawer/drawer.component';
+import { EmployesComponent } from './Components/employes/employes.component';
 
 registerLocaleData(en);
 
@@ -45,7 +46,8 @@ registerLocaleData(en);
 @NgModule({
   declarations: [
     AppComponent,
-    DrawerComponent
+    DrawerComponent,
+    EmployesComponent
   ],
   imports: [
     BrowserModule,

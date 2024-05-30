@@ -12,13 +12,10 @@
 >
   <ng-container *nzDrawerContent>
 
-    <div *ngIf="visible">
-
-      <div *ngFor="let item of menuItems">
-
-        <div (click)="toggleVisibility(item.name)" style="display: flex; flex-direction: row; align-items: center;">
-          <mat-icon  aria-hidden="false" aria-label="Example home icon" fontIcon="people"></mat-icon>
-          <p>{{item.name}}</p>
+    <div>
+      <div  *ngFor="let item of menuItems$ | async" (click)="toggleVisibility(item.name)">
+        <div style="margin: 5% 5% 5% 5%;">
+          <span >{{item.name}}</span>
         </div>
 
       </div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MenuService } from './Services/Menu/menu.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,19 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'EmployesfrontEndModule';
+
+  activeComponent$ = this.menuService.activeComponent$;
+
+  /**
+   *
+   */
+  constructor(private menuService: MenuService) {
+
+
+  }
+
+  ngOnInit(): void {
+    // Suscripción para recibir actualizaciones del componente activo
+  }
+
 }
