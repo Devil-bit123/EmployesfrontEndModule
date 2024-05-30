@@ -35,9 +35,14 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en'
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { DrawerComponent } from './Components/drawer/drawer.component';
 
 //Components
-import { DrawerComponent } from './Components/drawer/drawer.component';
+
+
+import { EmployesComponent } from './Components/employes/employes.component';
+import { AddEditComponent } from './Components/employes/add-edit/add-edit.component';
 
 registerLocaleData(en);
 
@@ -45,7 +50,9 @@ registerLocaleData(en);
 @NgModule({
   declarations: [
     AppComponent,
-    DrawerComponent
+    DrawerComponent,
+    EmployesComponent,
+    AddEditComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +68,7 @@ registerLocaleData(en);
 
 
     //NGZORRO
-    NzDrawerModule,NzIconModule,
+    NzDrawerModule,NzIconModule,NzButtonModule,
 
 
   ],

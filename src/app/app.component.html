@@ -1,2 +1,8 @@
 <app-drawer></app-drawer>
-<router-outlet></router-outlet>
+
+
+
+<div *ngIf="activeComponent$ | async as activeComponent">
+  <app-employes *ngIf="activeComponent === 'employees'"></app-employes>
+
+</div>
