@@ -13,11 +13,11 @@ export class EmployeService {
 
   constructor( private http:HttpClient) { }
 
-  private readonly baseUrl = environment.baseURL;
-  private urlAPI = this.baseUrl+"departments/";
+  public baseUrl = environment.baseURL;
+  private urlAPI = this.baseUrl+"employes/";
 
-  getAllEmployes():Observable<EmployesInterface>{
-    return this.http.get<EmployesInterface>(`${this.urlAPI}list`);
+  getAllEmployes():Observable<EmployesInterface[]>{
+    return this.http.get<EmployesInterface[]>(`${this.urlAPI}list`);
   }
 
  addEmploye(model:EmployesInterface):Observable<EmployesInterface>{
