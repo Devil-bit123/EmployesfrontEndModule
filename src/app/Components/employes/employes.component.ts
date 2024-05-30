@@ -5,6 +5,7 @@ import { EmployesInterface } from '../../Interfaces/Employes/employes-interface'
 import { EmployeService } from '../../Services/Employes/employe.service';
 
 import { MatDialog } from '@angular/material/dialog';
+import { AddEditComponent } from './add-edit/add-edit.component';
 
 
 @Component({
@@ -55,7 +56,7 @@ getEmployes(){
 }
 
 openDialog() {
-  this.dialog.open(DialogElementsExampleDialog);
+  this.dialog.open(AddEditComponent);
 }
 
 

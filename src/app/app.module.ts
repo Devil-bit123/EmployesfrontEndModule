@@ -39,8 +39,6 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { DrawerComponent } from './Components/drawer/drawer.component';
 
 //Components
-
-
 import { EmployesComponent } from './Components/employes/employes.component';
 import { AddEditComponent } from './Components/employes/add-edit/add-edit.component';
 
