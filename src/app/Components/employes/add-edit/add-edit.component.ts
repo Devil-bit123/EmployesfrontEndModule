@@ -98,7 +98,7 @@ export class AddEditComponent implements OnInit {
         },
       });
     } else {
-      console.log('ssd', this.dataEmploye);
+      //console.log('ssd', this.dataEmploye);
       this._employeService
         .updateEmploye(this.dataEmploye.id, nEmploye)
         .subscribe({

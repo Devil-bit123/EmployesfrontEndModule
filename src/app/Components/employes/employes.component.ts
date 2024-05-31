@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddEditComponent } from './add-edit/add-edit.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DeleteComponent } from './delete/delete.component';
+import { ReportComponent } from './report/report.component';
 
 @Component({
   selector: 'app-employes',
@@ -69,7 +70,7 @@ newEmployeDialog() {
 }
 
 updateEmployeDialog(dataEmploye : EmployesInterface) {
-  console.log('sss',dataEmploye);
+  //console.log('sss',dataEmploye);
   this.dialog.open(AddEditComponent,{
     disableClose:true,
     width:'500px',
@@ -106,6 +107,17 @@ deleteEmployeDialog(dataEmploye : EmployesInterface) {
           this.openSnackBar("We can't delete employe!","Ok");
         })
       });
+    }
+  });
+}
+
+
+reportEmployeDialog() {
+  //console.log('sss',dataEmploye);
+  this.dialog.open(ReportComponent,{
+    disableClose:true
+  }).afterClosed().subscribe(response =>{
+    if(response==='reported'){
     }
   });
 }
