@@ -49,14 +49,17 @@ export class EmployesComponent implements AfterViewInit, OnInit {
 getEmployes(){
   this._employeService.getAllEmployes().subscribe({
     next:(data =>{
-      console.log(data)
+      //console.log(data)
       this.dataSource.data=data;
     }),error:(e =>{})
   })
 }
 
 openDialog() {
-  this.dialog.open(AddEditComponent);
+  this.dialog.open(AddEditComponent,{
+    disableClose:true,
+    width:'500px'
+  });
 }
 
 
