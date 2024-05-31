@@ -54,7 +54,7 @@ registerLocaleData(en);
     EmployesComponent,
     AddEditComponent,
     DeleteComponent,
-    ReportComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { EmployesInterface } from './../../Interfaces/Employes/employes-interface';
 import { Injectable } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 
@@ -33,5 +33,18 @@ export class EmployeService {
     return this.http.delete<void>(`${this.urlAPI}delete/${idEmploye}`);
 
   }
+
+
+  downloadReportEmploye(gte: string, lte: string): Observable<Blob> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const body = { gte, lte };
+    return this.http.post(`${this.urlAPI}report`, body, {
+      headers: headers,
+      responseType: 'blob'  // Indicamos que esperamos un archivo binario
+    });
+  }
+
+
+
 }
 
