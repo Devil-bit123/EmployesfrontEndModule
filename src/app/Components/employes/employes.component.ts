@@ -55,10 +55,27 @@ getEmployes(){
   })
 }
 
-openDialog() {
+newEmployeDialog() {
   this.dialog.open(AddEditComponent,{
     disableClose:true,
     width:'500px'
+  }).afterClosed().subscribe(response =>{
+    if(response==='created'){
+      this.getEmployes();
+    }
+  });
+}
+
+updateEmployeDialog(dataEmploye : EmployesInterface) {
+  console.log('sss',dataEmploye);
+  this.dialog.open(AddEditComponent,{
+    disableClose:true,
+    width:'500px',
+    data:dataEmploye
+  }).afterClosed().subscribe(response =>{
+    if(response==='updated'){
+      this.getEmployes();
+    }
   });
 }
 

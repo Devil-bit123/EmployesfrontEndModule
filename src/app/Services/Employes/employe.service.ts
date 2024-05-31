@@ -11,26 +11,27 @@ import { Observable } from 'rxjs';
 })
 export class EmployeService {
 
-  constructor( private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   public baseUrl = environment.baseURL;
-  private urlAPI = this.baseUrl+"employes/";
+  private urlAPI = this.baseUrl + "employes/";
 
-  getAllEmployes():Observable<EmployesInterface[]>{
+  getAllEmployes(): Observable<EmployesInterface[]> {
     return this.http.get<EmployesInterface[]>(`${this.urlAPI}list`);
   }
 
- addEmploye(model:EmployesInterface):Observable<EmployesInterface>{
-  return  this.http.post<EmployesInterface>(`${this.urlAPI}save`,model);
- }
+  addEmploye(model: EmployesInterface): Observable<EmployesInterface> {
+    return this.http.post<EmployesInterface>(`${this.urlAPI}save`, model);
+  }
 
- updateEmploye(idEmploye:number,model:EmployesInterface):Observable<EmployesInterface>{
-  return  this.http.put<EmployesInterface>(`${this.urlAPI}update/{idEmploye}`,model);
- }
+  updateEmploye(idEmploye:number, model: EmployesInterface): Observable<EmployesInterface> {
+    return this.http.put<EmployesInterface>(`${this.urlAPI}update/${idEmploye}`, model);
 
- deleteEmploye(idEmploye:number):Observable<void>{
-  return  this.http.delete<void>(`${this.urlAPI}delete/{idEmploye}`);
- }
+  }
 
+  deleteEmploye(idEmploye: number): Observable<void> {
+    return this.http.delete<void>(`${this.urlAPI}delete/${idEmploye}`);
 
+  }
 }
+

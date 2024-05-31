@@ -6,5 +6,5 @@ export interface EmployesInterface {
   pay: number | null;
   contractDate: string | null;
   idDept: number | null;
-  nameDept: string | null;
+  nameDept?: string | null;
 }
