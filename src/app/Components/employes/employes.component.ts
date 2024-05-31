@@ -6,7 +6,8 @@ import { EmployeService } from '../../Services/Employes/employe.service';
 
 import { MatDialog } from '@angular/material/dialog';
 import { AddEditComponent } from './add-edit/add-edit.component';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DeleteComponent } from './delete/delete.component';
 
 @Component({
   selector: 'app-employes',
@@ -20,7 +21,8 @@ export class EmployesComponent implements AfterViewInit, OnInit {
   dataSource = new MatTableDataSource<EmployesInterface>();
 
   constructor(private _employeService : EmployeService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _snackBar : MatSnackBar
 
   ) {
 
@@ -75,6 +77,35 @@ updateEmployeDialog(dataEmploye : EmployesInterface) {
   }).afterClosed().subscribe(response =>{
     if(response==='updated'){
       this.getEmployes();
+    }
+  });
+}
+
+
+openSnackBar(message: string, action: string) {
+  this._snackBar.open(message, action, {
+    horizontalPosition: 'end',
+    verticalPosition: 'top',
+    duration: 3000,
+  });
+}
+
+
+deleteEmployeDialog(dataEmploye : EmployesInterface) {
+  console.log('sss',dataEmploye);
+  this.dialog.open(DeleteComponent,{
+    disableClose:true,
+    data:dataEmploye
+  }).afterClosed().subscribe(response =>{
+    if(response==='deleted'){
+      this._employeService.deleteEmploye(dataEmploye.id).subscribe({
+        next:(data=>{
+          this.openSnackBar("Employe deleted!","Ok");
+          this.getEmployes();
+        }),error:(e=>{
+          this.openSnackBar("We can't delete employe!","Ok");
+        })
+      });
     }
   });
 }
