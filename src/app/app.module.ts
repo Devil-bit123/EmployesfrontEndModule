@@ -41,6 +41,8 @@ import { DrawerComponent } from './Components/drawer/drawer.component';
 //Components
 import { EmployesComponent } from './Components/employes/employes.component';
 import { AddEditComponent } from './Components/employes/add-edit/add-edit.component';
+import { DeleteComponent } from './Components/employes/delete/delete.component';
+import { ReportComponent } from './Components/employes/report/report.component';
 
 registerLocaleData(en);
 
@@ -50,7 +52,9 @@ registerLocaleData(en);
     AppComponent,
     DrawerComponent,
     EmployesComponent,
-    AddEditComponent
+    AddEditComponent,
+    DeleteComponent,
+    ReportComponent,
   ],
   imports: [
     BrowserModule,

@@ -16,8 +16,8 @@ export class DepartmentService {
 
   constructor( private http: HttpClient) { }
 
-  getAllDepts():Observable<DepartmentsInterface>{
-    return this.http.get<DepartmentsInterface>(`${this.urlAPI}list`);
+  getAllDepts():Observable<DepartmentsInterface[]>{
+    return this.http.get<DepartmentsInterface[]>(`${this.urlAPI}list`);
   }
 
 

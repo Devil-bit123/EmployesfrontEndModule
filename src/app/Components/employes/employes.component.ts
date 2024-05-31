@@ -6,7 +6,8 @@ import { EmployeService } from '../../Services/Employes/employe.service';
 
 import { MatDialog } from '@angular/material/dialog';
 import { AddEditComponent } from './add-edit/add-edit.component';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DeleteComponent } from './delete/delete.component';
 
 @Component({
   selector: 'app-employes',
@@ -20,7 +21,8 @@ export class EmployesComponent implements AfterViewInit, OnInit {
   dataSource = new MatTableDataSource<EmployesInterface>();
 
   constructor(private _employeService : EmployeService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _snackBar : MatSnackBar
 
   ) {
 
@@ -49,14 +51,63 @@ export class EmployesComponent implements AfterViewInit, OnInit {
 getEmployes(){
   this._employeService.getAllEmployes().subscribe({
     next:(data =>{
-      console.log(data)
+      //console.log(data)
       this.dataSource.data=data;
     }),error:(e =>{})
   })
 }
 
-openDialog() {
-  this.dialog.open(AddEditComponent);
+newEmployeDialog() {
+  this.dialog.open(AddEditComponent,{
+    disableClose:true,
+    width:'500px'
+  }).afterClosed().subscribe(response =>{
+    if(response==='created'){
+      this.getEmployes();
+    }
+  });
+}
+
+updateEmployeDialog(dataEmploye : EmployesInterface) {
+  console.log('sss',dataEmploye);
+  this.dialog.open(AddEditComponent,{
+    disableClose:true,
+    width:'500px',
+    data:dataEmploye
+  }).afterClosed().subscribe(response =>{
+    if(response==='updated'){
+      this.getEmployes();
+    }
+  });
+}
+
+
+openSnackBar(message: string, action: string) {
+  this._snackBar.open(message, action, {
+    horizontalPosition: 'end',
+    verticalPosition: 'top',
+    duration: 3000,
+  });
+}
+
+
+deleteEmployeDialog(dataEmploye : EmployesInterface) {
+  console.log('sss',dataEmploye);
+  this.dialog.open(DeleteComponent,{
+    disableClose:true,
+    data:dataEmploye
+  }).afterClosed().subscribe(response =>{
+    if(response==='deleted'){
+      this._employeService.deleteEmploye(dataEmploye.id).subscribe({
+        next:(data=>{
+          this.openSnackBar("Employe deleted!","Ok");
+          this.getEmployes();
+        }),error:(e=>{
+          this.openSnackBar("We can't delete employe!","Ok");
+        })
+      });
+    }
+  });
 }
 
 

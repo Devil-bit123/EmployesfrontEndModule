@@ -1,0 +1,12 @@
+
+<h2 mat-dialog-title>{{titleForm}} Employe</h2>
+<mat-dialog-content>
+
+<h2>Confirm delete employe {{dataEmploye.name}} {{dataEmploye.lastName}}</h2>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button color="warn" mat-dialog-close>Back</button>
+  <button mat-button color="primary" (click)="confirmDelete()" cdkFocusinitial>{{titleButton}}</button>
+</mat-dialog-actions>
+
