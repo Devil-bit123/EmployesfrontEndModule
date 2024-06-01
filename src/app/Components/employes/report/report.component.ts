@@ -7,6 +7,8 @@ import dayjs from 'dayjs';
 
 import { EmployeService } from '../../../Services/Employes/employe.service';
 
+import { MatDialogRef } from '@angular/material/dialog';
+
 const today = new Date();
 const month = today.getMonth();
 const year = today.getFullYear();
@@ -23,14 +25,18 @@ export class ReportComponent {
   /**
    *
    */
-  constructor(private _employeService : EmployeService) {
+  constructor(private _employeService : EmployeService,private dialogRef: MatDialogRef<ReportComponent>) {
 
 
   }
 
+  today = new Date();
+  firstDayOfMonth = new Date(this.today.getFullYear(), this.today.getMonth(), 1);
+  lastDayOfMonth = new Date(this.today.getFullYear(), this.today.getMonth() + 1, 0);
+
   campaignTwo = new FormGroup({
-    start: new FormControl(new Date(year, month, 15)),
-    end: new FormControl(new Date(year, month, 19)),
+    start: new FormControl(this.firstDayOfMonth),
+    end: new FormControl(this.lastDayOfMonth),
   });
 
 
@@ -54,6 +60,10 @@ export class ReportComponent {
       a.click();
       window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
+
+
+      this.dialogRef.close('reported');
+
     }, error => {
       console.error('Error al descargar el reporte:', error);
     });

@@ -73,7 +73,7 @@ export class AddEditComponent implements OnInit {
   }
 
   addEdditEmploye() {
-    console.log(this.formEmploye.value);
+    //console.log(this.formEmploye.value);
 
     const nEmploye: EmployesInterface = {
       id: 0,
@@ -88,6 +88,7 @@ export class AddEditComponent implements OnInit {
     };
 
     if (this.dataEmploye == null) {
+      console.log('add', this.dataEmploye);
       this._employeService.addEmploye(nEmploye).subscribe({
         next: (data) => {
           this.openSnackBar('Employe created!', 'Ok');
@@ -98,7 +99,7 @@ export class AddEditComponent implements OnInit {
         },
       });
     } else {
-      //console.log('ssd', this.dataEmploye);
+      console.log('update', this.dataEmploye);
       this._employeService
         .updateEmploye(this.dataEmploye.id, nEmploye)
         .subscribe({
