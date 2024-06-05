@@ -47,7 +47,7 @@ Install EmployesfrontEndModule with git clone
 ![Module Excel Download](https://i.ibb.co/QQdnGDY/imagen-2024-06-05-111800396.png)
 
 ### Dashboard
-![Dashboard](https://i.ibb.co/8rvhn7F/imagen-2024-06-05-112000934.png)
+![Dashboard](https://i.ibb.co/ss50f4x/imagen-2024-06-05-141153208.png)
 
 ### Dashboard Download Modes
 ![Dashboard Download Modes](https://i.ibb.co/5vxVrbs/imagen-2024-06-05-112112347.png)
