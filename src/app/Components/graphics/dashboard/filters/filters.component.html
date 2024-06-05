@@ -6,34 +6,8 @@
     <mat-card-title>Set Filters</mat-card-title>
     <mat-card-subtitle>
 
-      <!-- <form formGroupName="campaignTwo">
-        <mat-form-field class="example-form-field">
-          <mat-label>Contract date range</mat-label>
-          <mat-date-range-input
-            [formGroup]="campaignTwo"
-            [rangePicker]="campaignOnePicker"
-            [comparisonStart]="campaignTwo.value.start"
-            [comparisonEnd]="campaignTwo.value.end">
-            <input matStartDate placeholder="Start date" formControlName="start">
-            <input matEndDate placeholder="End date" formControlName="end">
-          </mat-date-range-input>
-          <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
-          <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Min. Pay</mat-label>
-          <input matInput formControlName="min">
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Max. Pay</mat-label>
-          <input matInput formControlName="min">
-        </mat-form-field>
-
-      </form> -->
-
       <form [formGroup]="campaignTwo">
+
         <mat-form-field class="example-form-field">
           <mat-label>Contract date range</mat-label>
           <mat-date-range-input
@@ -64,7 +38,7 @@
             <mat-option *ngFor="let item of options" [value]="item.value">{{item.viewValue}}</mat-option>
           </mat-select>
         </mat-form-field>
-
+        <button mat-button (click)="resetDownload()" color="warn">Reset</button>
 
       </form>
 
@@ -73,7 +47,7 @@
   </mat-card-header>
   <mat-card-actions>
     <button mat-button color="warn">Reset</button>
-    <button mat-button color="primary" (click)="submitFilters()">Apply filter</button>
+    <button mat-button color="primary" [disabled]="campaignTwo.value.downloadMode=='pdf' || campaignTwo.value.downloadMode=='excel'" (click)="submitFilters()">Apply filter</button>
   </mat-card-actions>
 </mat-card>
 

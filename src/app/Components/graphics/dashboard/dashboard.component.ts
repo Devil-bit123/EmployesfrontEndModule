@@ -12,4 +12,9 @@ import { EmployeService } from '../../../Services/Employes/employe.service';
 })
 export class DashboardComponent {
 
+  generatePDF(){
+    console.log('Tengo que generar un pdf');
+
+  }
+
 }

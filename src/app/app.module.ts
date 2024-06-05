@@ -49,6 +49,7 @@ import { ReportComponent } from './Components/employes/report/report.component';
 import { DashboardComponent } from './Components/graphics/dashboard/dashboard.component';
 import { BarsGraphicComponent } from './Components/graphics/dashboard/bars-graphic/bars-graphic.component';
 import { FiltersComponent } from './Components/graphics/dashboard/filters/filters.component';
+import { PieChartComponent } from './Components/graphics/dashboard/pie-chart/pie-chart.component';
 
 registerLocaleData(en);
 
@@ -63,7 +64,8 @@ registerLocaleData(en);
     ReportComponent,
     DashboardComponent,
     BarsGraphicComponent,
-    FiltersComponent
+    FiltersComponent,
+    PieChartComponent
   ],
   imports: [
     BrowserModule,
