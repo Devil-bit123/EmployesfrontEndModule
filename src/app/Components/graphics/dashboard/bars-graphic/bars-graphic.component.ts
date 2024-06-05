@@ -64,6 +64,10 @@ export class BarsGraphicComponent implements OnInit, AfterViewInit, OnDestroy {
     const employeePays = this.employees.map(employee => employee.pay);
 
     const option: EChartsOption = {
+      grid:{
+        bottom:120,
+        left:80,
+      },
       tooltip: {
         trigger: 'axis',
         axisPointer: { // Use axis to trigger tooltip
