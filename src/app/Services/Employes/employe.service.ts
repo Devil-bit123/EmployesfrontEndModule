@@ -46,8 +46,18 @@ export class EmployeService {
     });
   }
 
-  employesGraphic(filter:Filter): Observable<void> {
-    return this.http.post<void>(`${this.urlAPI}graphic`,filter);
+  employesGraphic(filter:Filter): Observable<any> {
+
+    if(filter.is_download==true){
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      const body=filter;
+      return this.http.post(`${this.urlAPI}graphic`, body, {
+        headers: headers,
+        responseType: 'blob'  // Indicamos que esperamos un archivo binario
+      });
+    }else{
+      return this.http.post<void>(`${this.urlAPI}graphic`,filter);
+    }
 
   }
 
