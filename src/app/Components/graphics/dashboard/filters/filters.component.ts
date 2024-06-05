@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 
 import {
   FormGroup,
@@ -16,6 +16,8 @@ import dayjs from 'dayjs';
 import { EmployeService } from '../../../../Services/Employes/employe.service';
 
 import { EmployeBSService } from '../../../../Services/BehaviorSubjects/employe-bs.service';
+
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 const startmonth = dayjs().startOf('month').toDate();
 const endmonth = dayjs().endOf('month').toDate();
@@ -41,6 +43,9 @@ export class FiltersComponent {
     downloadMode: new FormControl(),
   });
 
+
+  @Output() downloadPDF = new EventEmitter<boolean>();
+
   filter: Filter = {
     gte: '',
     lte: '',
@@ -62,12 +67,21 @@ export class FiltersComponent {
    */
   constructor(
     private _employeService: EmployeService,
-    private _employeBSService: EmployeBSService
+    private _employeBSService: EmployeBSService,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
     //console.log('filtro', this.filter);
     this.campaignTwo.valueChanges.subscribe(this.handleFormChange.bind(this));
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
+
+  emmitPDFDownload(){
+    this.downloadPDF.emit(true);
   }
 
   handleFormChange() {
@@ -90,63 +104,43 @@ export class FiltersComponent {
     this.filter.is_download = this.campaignTwo.value.downloadMode == 'excel';
   }
 
-  // submitFilters() {
-  //   console.log('filtro', this.filter);
-
-  //   if (this.filter.is_download) {
-
-  //     const fileName = "Employes_report_from_"+this.filter.gte+"_to_"+this.filter.lte+"_.xlsx"
-
-  //     this._employeService.employesGraphic(this.filter).subscribe({
-  //       next: (data) => {
-  //         const blob1 = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-  //         const url = window.URL.createObjectURL(blob1);
-  //         const b = document.createElement('b');
-
-  //         b.href = url;
-  //         b.download = fileName;
-  //         document.body.appendChild(b);
-  //         b.click();
-  //         window.URL.revokeObjectURL(url);
-  //         document.body.removeChild(b);
-  //       },
-  //       error: (e) => {
-  //         console.log(e);
-  //       },
-  //     });
 
 
-  //   } else {
-
-  //     this._employeService.employesGraphic(this.filter).subscribe({
-  //       next: (data) => {
-  //         this.graphic = data;
-  //         this._employeBSService.setEmployees(this.graphic);
-  //       },
-  //       error: (e) => {
-  //         console.log(e);
-  //       },
-  //     });
-
-  //   }
-  // }
+  resetDownload() {
+    this.campaignTwo.get('downloadMode')?.setValue(null);
+    //console.log();
+  }
 
   submitFilters() {
     console.log('filtro', this.filter);
 
-    if(!this.filter.is_download && this.campaignTwo.value.downloadMode=='pdf'){
-      console.log('PDF');
+      this._employeService.employesGraphic(this.filter).subscribe({
+        next: (data) => {
+          // Manejar los datos recibidos cuando is_download es false
+          this.graphic = data;
+          this._employeBSService.setEmployees(this.graphic);
+        },
+        error: (e) => {
+          console.log(e);
+        },
+      });
 
-      //Instalar plugin para exportar PDF
-    }
+  }
 
-    if (this.filter.is_download) {
+
+  generateExcelFile(){
+
+
+    //console.log('filtro excel',this.filter);
+
       const fileName = "Employes_report_from_" + this.filter.gte + "_to_" + this.filter.lte + "_.xlsx";
 
       this._employeService.employesGraphic(this.filter).subscribe({
         next: (data: any) => {
           // Verificar si la respuesta es un Blob
           if (data instanceof Blob) {
+            this.openSnackBar("Excel generado","OK");
+
             // Crear un objeto Blob
             const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
 
@@ -176,24 +170,31 @@ export class FiltersComponent {
           console.log(e);
         },
       });
-    } else {
-      this._employeService.employesGraphic(this.filter).subscribe({
-        next: (data) => {
-          // Manejar los datos recibidos cuando is_download es false
-          this.graphic = data;
-          this._employeBSService.setEmployees(this.graphic);
-        },
-        error: (e) => {
-          console.log(e);
-        },
-      });
-    }
+
+
   }
 
+  generatePDFfile(){
 
-  updateOption(departmentId: string) {
-    const selectedDept = this.options.find(
-      (dept) => dept.value === departmentId
+  }
+
+  updateOption(optionValue: string) {
+    const selectedOpt = this.options.find(
+      (opt) => opt.value === optionValue
     );
+
+    if(optionValue==='pdf'){
+
+      this.emmitPDFDownload();
+      this.openSnackBar("Pdf generado","OK");
+
+    }else if(optionValue==='excel'){
+
+      this.generateExcelFile();
+
+    }else{
+
+    }
+
   }
 }

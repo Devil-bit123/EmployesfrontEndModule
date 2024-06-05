@@ -1,2 +1,17 @@
-<app-filters></app-filters>
-<app-bars-graphic></app-bars-graphic>
+<app-filters (downloadPDF)="generatePDF()"></app-filters>
+
+
+<div class="report-container" >
+
+<app-bars-graphic style="margin: 20px 0 0 20px;"></app-bars-graphic>
+<app-pie-chart></app-pie-chart>
+
+
+</div>
+
+
+<div class="report-container" >
+
+  <app-line-chart style="margin: 20px 0 0 20px;"></app-line-chart>
+
+</div>

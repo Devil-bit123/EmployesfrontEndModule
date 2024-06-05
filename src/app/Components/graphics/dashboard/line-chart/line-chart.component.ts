@@ -5,17 +5,16 @@ import { EmployeBSService } from '../../../../Services/BehaviorSubjects/employe-
 import * as echarts from 'echarts';
 import { EChartsOption } from 'echarts';
 
+
 @Component({
-  selector: 'app-bars-graphic',
-  templateUrl: './bars-graphic.component.html',
-  styleUrls: ['./bars-graphic.component.css'] // Corrige a styleUrls
+  selector: 'app-line-chart',
+  templateUrl: './line-chart.component.html',
+  styleUrl: './line-chart.component.css'
 })
-export class BarsGraphicComponent implements OnInit, AfterViewInit, OnDestroy {
+export class LineChartComponent implements OnInit, AfterViewInit, OnDestroy {
 
   employees: EmployesInterface[] = [];
   private chart: echarts.ECharts | null = null;
-
-
 
   constructor(private employeBSService: EmployeBSService) {}
 
@@ -30,7 +29,7 @@ export class BarsGraphicComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
 
-    const chartDom = document.getElementById('main') as HTMLDivElement | null;
+    const chartDom = document.getElementById('line-chart') as HTMLDivElement | null;
     if (chartDom) {
       this.chart = echarts.init(chartDom);
       this.updateChart();
@@ -60,7 +59,7 @@ export class BarsGraphicComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private getChartData(): EChartsOption { // Corrige el tipo aquí también
-    const employeeNames = this.employees.map(employee => employee.name + ' ' + employee.lastName);
+    const employeeNames = this.employees.map(employee => employee.contractDate + ' ');
     const employeePays = this.employees.map(employee => employee.pay);
 
     const option: EChartsOption = {
@@ -87,7 +86,7 @@ export class BarsGraphicComponent implements OnInit, AfterViewInit, OnDestroy {
       series: [
         {
           data: employeePays,
-          type: 'bar'
+          type: 'line'
         }
       ]
     };
@@ -120,5 +119,6 @@ export class BarsGraphicComponent implements OnInit, AfterViewInit, OnDestroy {
 
     return option;
   }
+
 
 }
