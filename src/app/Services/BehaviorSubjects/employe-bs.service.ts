@@ -13,7 +13,7 @@ export class EmployeBSService {
 
   setEmployees(employees: EmployesInterface[]): void {
     this.employeBS.next(employees); // Actualizar el estado del BS con la lista de empleados
-    console.log('employes desde BS',employees);
+    //console.log('employes desde BS',employees);
   }
 
 }

@@ -93,7 +93,7 @@ openSnackBar(message: string, action: string) {
 
 
 deleteEmployeDialog(dataEmploye : EmployesInterface) {
-  console.log('sss',dataEmploye);
+  //console.log('sss',dataEmploye);
   this.dialog.open(DeleteComponent,{
     disableClose:true,
     data:dataEmploye

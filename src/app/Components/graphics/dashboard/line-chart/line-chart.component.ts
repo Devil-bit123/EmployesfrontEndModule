@@ -22,7 +22,7 @@ export class LineChartComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.employeBSService.employeBS.subscribe((employees: EmployesInterface[]) => {
       this.employees = employees;
-      console.log('employes desde bars graphic', this.employees);
+      //console.log('employes desde bars graphic', this.employees);
       this.updateChart(); // Asegúrate de actualizar el gráfico cuando cambien los empleados
     });
   }
@@ -63,6 +63,9 @@ export class LineChartComponent implements OnInit, AfterViewInit, OnDestroy {
     const employeePays = this.employees.map(employee => employee.pay);
 
     const option: EChartsOption = {
+      title:{
+        text:"Employes Line Chart"
+      },
       grid:{
         bottom:120,
         left:80,

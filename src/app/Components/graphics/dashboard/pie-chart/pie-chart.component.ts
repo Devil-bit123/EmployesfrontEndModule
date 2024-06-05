@@ -23,7 +23,7 @@ export class PieChartComponent implements OnInit, AfterViewInit, OnDestroy {
     this.employeBSService.employeBS.subscribe(
       (employees: EmployesInterface[]) => {
         this.employees = employees;
-        console.log('employes desde bars graphic', this.employees);
+        //console.log('employes desde bars graphic', this.employees);
         this.updateChart(); // Asegúrate de actualizar el gráfico cuando cambien los empleados
       }
     );
@@ -101,12 +101,16 @@ export class PieChartComponent implements OnInit, AfterViewInit, OnDestroy {
     const employeeDeptData = this.groupEmployeesByDepartment();
 
     const option: EChartsOption = {
+      title:{
+        text:"Employes pie chart",
+        top: 20,
+      },
       tooltip: {
         trigger: 'item'
       },
       legend: {
         orient: 'vertical',
-        left: 'left'
+        left: 'right'
       },
       series: [
         {
