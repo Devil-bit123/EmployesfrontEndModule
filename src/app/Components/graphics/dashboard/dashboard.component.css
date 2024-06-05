@@ -1,0 +1,7 @@
+.report-container{
+  display: flex;
+  flex-direction: row;
+  margin: 20px auto;
+  padding:5px auto;
+  gap: 2px;
+}
