@@ -112,7 +112,7 @@ export class FiltersComponent {
   }
 
   submitFilters() {
-    console.log('filtro', this.filter);
+    //console.log('filtro', this.filter);
 
       this._employeService.employesGraphic(this.filter).subscribe({
         next: (data) => {
@@ -121,7 +121,7 @@ export class FiltersComponent {
           this._employeBSService.setEmployees(this.graphic);
         },
         error: (e) => {
-          console.log(e);
+          //console.log(e);
         },
       });
 

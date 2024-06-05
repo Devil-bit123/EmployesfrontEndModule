@@ -68,7 +68,7 @@ export class ReportComponent {
       console.error('Error al descargar el reporte:', error);
     });
 
-    console.log(response);
+    //console.log(response);
   }
 
 

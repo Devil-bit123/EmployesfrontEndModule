@@ -4,6 +4,8 @@ import { BarsGraphicComponent } from './bars-graphic/bars-graphic.component';
 
 import { EmployeService } from '../../../Services/Employes/employe.service';
 
+import { GeneratePDFService } from '../../../Services/Utils/generate-pdf.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -12,8 +14,13 @@ import { EmployeService } from '../../../Services/Employes/employe.service';
 })
 export class DashboardComponent {
 
+  constructor(private pdfGeneratorService: GeneratePDFService) { }
+
   generatePDF(){
-    console.log('Tengo que generar un pdf');
+    //console.log('Tengo que generar un pdf');
+
+    this.pdfGeneratorService.generatePdf('ReportDashboard','Emplyes_Report.pdf','Emplyes Report');
+
 
   }
 

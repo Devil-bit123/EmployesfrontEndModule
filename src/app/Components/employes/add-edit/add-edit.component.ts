@@ -57,7 +57,7 @@ export class AddEditComponent implements OnInit {
 
     this._departamentService.getAllDepts().subscribe({
       next: (data) => {
-        console.log(data);
+        //console.log(data);
         this.departments = data;
       },
       error: (e) => {},
@@ -88,7 +88,7 @@ export class AddEditComponent implements OnInit {
     };
 
     if (this.dataEmploye == null) {
-      console.log('add', this.dataEmploye);
+      //console.log('add', this.dataEmploye);
       this._employeService.addEmploye(nEmploye).subscribe({
         next: (data) => {
           this.openSnackBar('Employe created!', 'Ok');
@@ -99,7 +99,7 @@ export class AddEditComponent implements OnInit {
         },
       });
     } else {
-      console.log('update', this.dataEmploye);
+      //console.log('update', this.dataEmploye);
       this._employeService
         .updateEmploye(this.dataEmploye.id, nEmploye)
         .subscribe({
@@ -118,7 +118,7 @@ export class AddEditComponent implements OnInit {
     if (this.dataEmploye) {
       this.titleForm = 'Edit';
       this.titleButton = 'Update';
-      console.log(this.dataEmploye.idDept)
+      //console.log(this.dataEmploye.idDept)
       this.formEmploye.patchValue({
         idDept: this.dataEmploye.idDept,
         name: this.dataEmploye.name,
@@ -127,7 +127,7 @@ export class AddEditComponent implements OnInit {
         pay: this.dataEmploye.pay,
         contractDate: dayjs(this.dataEmploye.contractDate).toDate(),
       });
-      console.log(this.formEmploye.value);
+      //console.log(this.formEmploye.value);
     }
   }
 

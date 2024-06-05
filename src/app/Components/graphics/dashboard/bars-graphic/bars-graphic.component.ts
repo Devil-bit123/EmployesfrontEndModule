@@ -23,7 +23,7 @@ export class BarsGraphicComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.employeBSService.employeBS.subscribe((employees: EmployesInterface[]) => {
       this.employees = employees;
-      console.log('employes desde bars graphic', this.employees);
+      //console.log('employes desde bars graphic', this.employees);
       this.updateChart(); // Asegúrate de actualizar el gráfico cuando cambien los empleados
     });
   }
@@ -67,6 +67,9 @@ export class BarsGraphicComponent implements OnInit, AfterViewInit, OnDestroy {
       grid:{
         bottom:120,
         left:80,
+      },
+      title:{
+        text:"Emplyes bar graphic"
       },
       tooltip: {
         trigger: 'axis',
