@@ -55,8 +55,19 @@
 
         <mat-form-field>
           <mat-label>Max. Pay</mat-label>
-          <input matInput formControlName="max_pay">  </mat-form-field>
+          <input matInput formControlName="max_pay">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Download Mode</mat-label>
+          <mat-select formControlName="downloadMode" (selectionChange)="updateOption($event.value)">
+            <mat-option *ngFor="let item of options" [value]="item.value">{{item.viewValue}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
       </form>
+
 
     </mat-card-subtitle>
   </mat-card-header>
