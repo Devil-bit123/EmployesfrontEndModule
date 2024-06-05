@@ -5,6 +5,6 @@ export interface EmployesInterface {
   email: string | null;
   pay: number | null;
   contractDate: string | null;
-  idDept: number | null;
+  idDept: number;
   nameDept?: string | null;
 }
