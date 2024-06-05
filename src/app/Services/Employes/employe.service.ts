@@ -1,9 +1,11 @@
+import { Filter } from './../../Interfaces/Filter/filter';
 import { EmployesInterface } from './../../Interfaces/Employes/employes-interface';
 import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
+
 
 
 @Injectable({
@@ -42,6 +44,21 @@ export class EmployeService {
       headers: headers,
       responseType: 'blob'  // Indicamos que esperamos un archivo binario
     });
+  }
+
+  employesGraphic(filter:Filter): Observable<any> {
+
+    if(filter.is_download==true){
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      const body=filter;
+      return this.http.post(`${this.urlAPI}graphic`, body, {
+        headers: headers,
+        responseType: 'blob'  // Indicamos que esperamos un archivo binario
+      });
+    }else{
+      return this.http.post<void>(`${this.urlAPI}graphic`,filter);
+    }
+
   }
 
 

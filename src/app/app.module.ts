@@ -17,6 +17,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
 
 
 //ReactiveForms
@@ -27,6 +28,8 @@ import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 
 //dayJS
 import * as dayjs from 'dayjs';
+
+
 
 //NG Zorro
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
@@ -43,6 +46,9 @@ import { EmployesComponent } from './Components/employes/employes.component';
 import { AddEditComponent } from './Components/employes/add-edit/add-edit.component';
 import { DeleteComponent } from './Components/employes/delete/delete.component';
 import { ReportComponent } from './Components/employes/report/report.component';
+import { DashboardComponent } from './Components/graphics/dashboard/dashboard.component';
+import { BarsGraphicComponent } from './Components/graphics/dashboard/bars-graphic/bars-graphic.component';
+import { FiltersComponent } from './Components/graphics/dashboard/filters/filters.component';
 
 registerLocaleData(en);
 
@@ -54,7 +60,10 @@ registerLocaleData(en);
     EmployesComponent,
     AddEditComponent,
     DeleteComponent,
-    ReportComponent
+    ReportComponent,
+    DashboardComponent,
+    BarsGraphicComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +73,7 @@ registerLocaleData(en);
     MatButtonModule,MatPaginatorModule,MatTableModule,ReactiveFormsModule,
     MatInputModule,MatSelectModule,MatDatepickerModule,NativeDateModule,
     MatSnackBarModule,MatIconModule,MatDialogModule,MatGridListModule,FormsModule,
+    MatCardModule,
 
     //Http
     HttpClientModule,

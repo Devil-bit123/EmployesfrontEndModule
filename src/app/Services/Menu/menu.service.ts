@@ -9,7 +9,8 @@ export class MenuService {
 
   private menuItemsSource = new BehaviorSubject<Menu[]>([
     { name: 'Employes', visibilityStatus: false },
-    { name: 'Departments', visibilityStatus: false }
+    { name: 'Departments', visibilityStatus: false },
+    { name: 'Dashboard', visibilityStatus: false }
   ]);
 
   private activeComponentSource = new BehaviorSubject<string>('');

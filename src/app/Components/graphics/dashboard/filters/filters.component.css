@@ -1,0 +1,12 @@
+mat-grid-tile {
+  background: lightblue;
+}
+.centered-component {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  border-color: #000000 solid;
+  border-radius: 20px;
+  color: #000000;
+
+}
