@@ -8,8 +8,8 @@ import { Menu } from '../../Interfaces/Menu/menu';
 export class MenuService {
 
   private menuItemsSource = new BehaviorSubject<Menu[]>([
-    { name: 'employees', visibilityStatus: false },
-    { name: 'departments', visibilityStatus: false }
+    { name: 'Employes', visibilityStatus: false },
+    { name: 'Departments', visibilityStatus: false }
   ]);
 
   private activeComponentSource = new BehaviorSubject<string>('');

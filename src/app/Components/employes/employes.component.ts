@@ -118,6 +118,7 @@ reportEmployeDialog() {
     disableClose:true
   }).afterClosed().subscribe(response =>{
     if(response==='reported'){
+      this.openSnackBar("Report generated!","Ok");
     }
   });
 }
