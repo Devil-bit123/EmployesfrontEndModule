@@ -1,27 +1,48 @@
+
 # EmployesfrontEndModule
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
+a frontend module made in Angular to serve the backend application, made with angular material and ng-zorro; It also incorporates the Echarts graphics library to display the information.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Installation
 
-## Code scaffolding
+Install EmployesfrontEndModule with git clone
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+  git clone https://github.com/Devil-bit123/EmployesfrontEndModule.git
 
-## Build
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+    
+## Features
 
-## Running unit tests
+- Complete employes CRUD operations
+- Employes module excel download
+- Graphic dashboard
+- Excel or PDF dashboard download
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Screenshots
 
-## Further help
+![Module Drawer](https://i.ibb.co/PNPhycy/imagen-2024-06-05-111913132.png)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![API REQUESTS](https://i.ibb.co/RbTfsgc/imagen-2024-06-05-110359512.png)
+
+![List](https://i.ibb.co/WtXdr7f/imagen-2024-06-05-111342573.png)
+
+![Create](https://i.ibb.co/hR947NB/imagen-2024-06-05-111436470.png)
+
+![Update](https://i.ibb.co/0CG5zQz/imagen-2024-06-05-111526926.png)
+
+![Delete](https://i.ibb.co/HtjNN3b/imagen-2024-06-05-111618775.png)
+
+![Module Excel Download](https://i.ibb.co/QQdnGDY/imagen-2024-06-05-111800396.png)
+
+![Dashboard](https://i.ibb.co/8rvhn7F/imagen-2024-06-05-112000934.png)
+
+![Dashboard Download Modes](https://i.ibb.co/5vxVrbs/imagen-2024-06-05-112112347.png)
+## Authors
+
+- [@Devil-bit123](https://github.com/Devil-bit123)
+
